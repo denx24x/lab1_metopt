@@ -43,25 +43,25 @@ def get_df(matrix):
     return (lambda x : [sum([((n[i][g] * x[g]) if i != g else (2 * n[i][g] * x[g])) for g in range(matrix.shape[1])]) for i in range(matrix.shape[0])])
 
 def T(n, k):
-    #matrix = generate_function(n, k)
-    f = (lambda x : (1 - x[0])**2 + (x[1] - x[0])**2)
-    df = lambda x : [-2 * (1 - x[0]) - 2 * (x[1] - x[0]), 2 * (x[1] - x[0])]#f = (lambda x : 6 * x[0]**2 + 2 * x[1]**2)
+    matrix = generate_function(n, k)
+    #f = (lambda x : (1 - x[0])**2 + (x[1] - x[0])**2)
+    #df = lambda x : [-2 * (1 - x[0]) - 2 * (x[1] - x[0]), 2 * (x[1] - x[0])]#f = (lambda x : 6 * x[0]**2 + 2 * x[1]**2)
     #df = (lambda x : [12 * x[0], 4 * x[1]])
-    #ans, cnt = withDich(get_f(matrix), get_df(matrix), n, 0.0001)
-    ans, cnt = withDich(f, df, n, 0.0001)
+    ans, cnt = withDich(get_f(matrix), get_df(matrix), n, 0.0001)
+    #ans, cnt = withDich(f, df, n, 0.0001)
     
-    axis = np.linspace(-20, 20)
-    x, y = np.meshgrid(axis, axis)
+    #axis = np.linspace(-20, 20)
+    #x, y = np.meshgrid(axis, axis)
 
     #ax = plt.figure().add_subplot(projection="3d")
     #ax.plot_surface(x, y, get_f(matrix)([x, y]), cmap='viridis', edgecolor='none')
     #plt.show()
 
-    plt.plot([i[0] for i in ans], [i[1] for i in ans], c="red")
+    #plt.plot([i[0] for i in ans], [i[1] for i in ans], c="red")
     #plt.contour(x, y, get_f(matrix)([x, y]), levels=sorted([get_f(matrix)(i) for i in ans]))
-    plt.contour(x, y, f([x, y]), levels=sorted([f(i) for i in ans]))
-    plt.show()
-    print(cnt)
+    #plt.contour(x, y, f([x, y]), levels=sorted([f(i) for i in ans]))
+    #plt.show()
+    #print(cnt)
     #print(ans)
     return cnt
 
@@ -78,7 +78,6 @@ def get_data():
         print(k, end=';')
         print(';'.join(map(str, data)))
 
-T(2, 1)
 
 #for i in range(10000):
 #    print(T(2, 8))
